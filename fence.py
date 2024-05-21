@@ -1,6 +1,9 @@
-# def num_check(question):
-#     keep_going = " "
-#     while 
+# Author: Joseph Ryu
+# Date: 
+# 1.0 2024/5/17
+# 1.5 2024/5/22
+
+
 
 
 while True:
