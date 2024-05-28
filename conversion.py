@@ -1,7 +1,5 @@
-def convert_time():
+def convert_time(time_value, time_unit):
     try:
-        time_value = float(input("Enter the time value: "))
-        time_unit = input("Enter the time unit (hours/minutes/seconds): ").lower()
 
         if time_unit == "hours":
             minutes = time_value * 60
@@ -24,11 +22,8 @@ def convert_time():
     except ValueError:
         print("Invalid input. Please enter a valid numeric value for time.")
 
-def convert_distance():
+def convert_distance(distance_value, distance_unit):
     try:
-        distance_value = float(input("Enter the distance value: "))
-        distance_unit = input("Enter the distance unit (m/km/cm): ").lower()
-
         if distance_unit == "m":
             km = distance_value / 1000
             cm = distance_value * 100
@@ -49,10 +44,8 @@ def convert_distance():
     except ValueError:
         print("Invalid input. Please enter a valid numeric value for distance.")
 
-def convert_mass():
+def convert_mass(mass_value, mass_unit):
     try:
-        mass_value = float(input("Enter the mass value: "))
-        mass_unit = input("Enter the mass unit (g/kg/tonnes): ").lower()
 
         if mass_unit == "g":
             kg = mass_value / 1000
@@ -75,20 +68,21 @@ def convert_mass():
     except ValueError:
         print("Invalid input. Please enter a valid numeric value for mass.")
 
+
 while True:
-    print("Welcome to the Unit Converter!")
-    print("Choose an option:")
-    print("1. Convert Time")
-    print("2. Convert Distance")
-    print("3. Convert Mass")
+    value = int(input("Enter the value: "))
+    ask = input(str("Time, distance or mass? (t,d,m): "))
 
-    choice = input("Enter your choice (1/2/3): ")
+    if ask == "t":
+        time_unit = input("Enter the time unit (hours/minutes/seconds): ").lower()
+        convert_time(value, time_unit)
 
-    if choice == "1":
-        convert_time()
-    elif choice == "2":
-        convert_distance()
-    elif choice == "3":
-        convert_mass()
-    else:
-        print("Invalid choice. Please enter 1, 2, or 3.")
+    elif ask == "d":
+        distance_unit = input("Enter the distance unit (m/km/cm): ").lower()
+        convert_distance(value, distance_unit)
+
+    elif ask == "m":
+        mass_unit = input("Enter the mass unit (g/kg/tonnes): ").lower()
+        convert_mass(value, mass_unit)
+
+        

@@ -11,4 +11,3 @@ for item in range(1, 13):
 
     print(f"Each student gets {per_student} and we have {lollies_left} left over")
 
-    
