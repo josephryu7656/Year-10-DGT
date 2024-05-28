@@ -27,7 +27,6 @@ while True:
         else:
             #If value is 0 or under
             print("Please enter a valid value")
-            break
     except ValueError:
         #if value is not an integer
         print("Error")

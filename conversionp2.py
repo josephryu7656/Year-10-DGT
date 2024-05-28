@@ -44,25 +44,45 @@ check = False
 while not check:
     print("Unit Conversion Calculator")
     print("Which unit of measurement would you like to convert?")
-    ask = input(str("Time, Distance, Mass(t, d, m) >"))
-    if ask == "t": 
-        v = int(input("Enter the value > "))
-        p = input(str("From (seconds, minutes, hours, days) > "))
-        c = input(str("To (seconds, minutes, hours, days) > "))
-        time_conversion(v, p, c)
+    try:
+        ask = input(str("Time, Distance, Mass(t, d, m) >"))
+        if ask == "t": 
+            v = int(input("Enter the value > "))
+            p = input(str("From (seconds, minutes, hours, days) > "))
+            c = input(str("To (seconds, minutes, hours, days) > "))
+            time_conversion(v, p, c)
+            input(str("run again or exit? (r, e) > "))
+            if input =="e":
+                check = True
+            else:
+                pass
     
-    elif ask == "d": 
-        v = int(input("Enter the value > "))
-        p = input(str("From (mm, cm, m, km) > "))
-        c = input(str("To (mm, cm, m, km) > "))
-        distance_conversion(v, p, c)
+        elif ask == "d": 
+            v = int(input("Enter the value > "))
+            p = input(str("From (mm, cm, m, km) > "))
+            c = input(str("To (mm, cm, m, km) > "))
+            distance_conversion(v, p, c)
+            input(str("run again or exit? (r, e) > "))
+            if input =="e":
+                check = True
+            else:
+                pass
 
-    elif ask == "m": 
-        v = int(input("Enter the value > "))
-        p = input(str("From (mg, g, kg, t) > "))
-        c = input(str("To (mg, g, kg, t) > "))
-        mass_conversion(v, p, c)
-    else:
-        print("tbc")
+        elif ask == "m": 
+            v = int(input("Enter the value > "))
+            p = input(str("From (mg, g, kg, t) > "))
+            c = input(str("To (mg, g, kg, t) > "))
+            mass_conversion(v, p, c)
+            input(str("run again or exit? (r, e) > "))
+            if input =="e":
+                check = True
+            else:
+                pass
+                
+        else:
+            print("tbc")
+
+    except ValueError:
+        print("Error")
     
     
