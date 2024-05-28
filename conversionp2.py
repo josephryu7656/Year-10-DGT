@@ -1,6 +1,6 @@
-def distance_convertion(value, from_unit, to_unit):
+def distance_conversion(value, from_unit, to_unit):
     conversion_factors = {
-        "cm": {"m": 0.01, "mm": 10},
+        "cm": {"m": 0.01, "mm": 10, "km": 0.000001},
         "m": {"cm": 100, "mm": 1000, "km": 0.001},
         "mm": {"cm": 0.1, "m": 0.001, "km": 1e-6},
         "km": {"cm": 100000, "m": 1000, "mm": 1e+6},
@@ -12,9 +12,9 @@ def distance_convertion(value, from_unit, to_unit):
     except ValueError:
         print("errror")
 
-def time_convertion(value, from_unit, to_unit):
+def time_conversion(value, from_unit, to_unit):
     conversion_factors = {
-        "seconds": {"minutes": 0.016667, "hours": 2.778e-4},
+        "seconds": {"minutes": 0.016667, "hours": 2.778e-4, "days": 1.1575e-5},
         "minutes": {"seconds": 60, "hours": 0.016667, "days":6.94e-4},
         "hours": {"seconds": 3600, "minutes": 60, "days": 0.041667},
         "days": {"seconds": 86400, "minutes": 1440, "hours": 24},
@@ -24,35 +24,44 @@ def time_convertion(value, from_unit, to_unit):
         result = value * conversion_factors[from_unit][to_unit]
         print(f"{result:.2f}{to_unit}")
     except ValueError:
-        print("errror")
+        print("error")
 
 def mass_conversion(value, from_unit, to_unit):
     conversion_factors = {
-        "seconds": {"minutes": 0.016667, "hours": 2.778e-4},
-        "minutes": {"seconds": 60, "hours": 0.016667, "days":6.94e-4},
-        "hours": {"seconds": 3600, "minutes": 60, "days": 0.041667},
-        "days": {"seconds": 86400, "minutes": 1440, "hours": 24},
+        "mg": {"g": 0.01, "kg": 0.00001, "t": 0.00000001},
+        "g": {"mg": 100, "kg": 0.001, "t":0.000001},
+        "kg": {"mg": 100000, "g": 1000, "t": 0.001},
+        "t": {"mg": 1e-9, "g": 1e-6, "kg": 1000},
     }
 
     try:
         result = value * conversion_factors[from_unit][to_unit]
         print(f"{result:.2f}{to_unit}")
     except ValueError:
-        print("errror")
+        print("error")
 
-while True:
-    ask = input(str("Time, Distance(t, d)"))
+check = False
+while not check:
+    print("Unit Conversion Calculator")
+    print("Which unit of measurement would you like to convert?")
+    ask = input(str("Time, Distance, Mass(t, d, m) >"))
     if ask == "t": 
         v = int(input("Enter the value > "))
         p = input(str("From (seconds, minutes, hours, days) > "))
         c = input(str("To (seconds, minutes, hours, days) > "))
-        time_convertion(v, p, c)
+        time_conversion(v, p, c)
     
     elif ask == "d": 
         v = int(input("Enter the value > "))
         p = input(str("From (mm, cm, m, km) > "))
         c = input(str("To (mm, cm, m, km) > "))
-        distance_convertion(v, p, c)
+        distance_conversion(v, p, c)
+
+    elif ask == "m": 
+        v = int(input("Enter the value > "))
+        p = input(str("From (mg, g, kg, t) > "))
+        c = input(str("To (mg, g, kg, t) > "))
+        mass_conversion(v, p, c)
     else:
         print("tbc")
     
