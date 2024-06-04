@@ -1,6 +1,8 @@
-
-
-
+# Author: Joseph Ryu
+# Date: 
+# Adding Time 2024/5/22
+# Adding Distance and Mass function 2024/5/24
+# Optimizing code 2024/6/5
 #Distance conversion function
 def distance_conversion(value, from_unit, to_unit):
     # Uses dictionary to define the value of each conversion
@@ -10,11 +12,11 @@ def distance_conversion(value, from_unit, to_unit):
         "mm": {"cm": 0.1, "m": 0.001, "km": 1e-6},
         "km": {"cm": 100000, "m": 1000, "mm": 1e+6},
     }
-
+    # The program will try to enter the value to be multipied with the conversion factors. If there is a error it will print "error" and restart the loop
     try:
         #Multiplies the entered value and it will detect the unit
         result = value * conversion_factors[from_unit][to_unit]
-        print(f"{result}{to_unit}")
+        print(f"{result:.2f}{to_unit}")
     except ValueError:
         print("errror")
 
@@ -85,7 +87,9 @@ while not check:
             v = int(input("Enter the value > "))
             p = input(str("From (mg, g, kg, t) > "))
             c = input(str("To (mg, g, kg, t) > "))
+            #function has been asked for value, from unit and to unit.
             mass_conversion(v, p, c)
+            #Option for user to restart program or exit program.
             input(str("run again or exit? (r, e) > "))
             if input =="e":
                 check = True
@@ -95,7 +99,11 @@ while not check:
         else:
             print("tbc")
 
+    # Will print error and restart loop if a value error occurs
     except ValueError:
         print("Error")
     
     
+
+
+
