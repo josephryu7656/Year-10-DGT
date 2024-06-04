@@ -1,4 +1,9 @@
+
+
+
+#Distance conversion function
 def distance_conversion(value, from_unit, to_unit):
+    # Uses dictionary to define the value of each conversion
     conversion_factors = {
         "cm": {"m": 0.01, "mm": 10, "km": 0.000001},
         "m": {"cm": 100, "mm": 1000, "km": 0.001},
@@ -7,11 +12,14 @@ def distance_conversion(value, from_unit, to_unit):
     }
 
     try:
+        #Multiplies the entered value and it will detect the unit
         result = value * conversion_factors[from_unit][to_unit]
         print(f"{result}{to_unit}")
     except ValueError:
         print("errror")
 
+
+#Very similar to the other function
 def time_conversion(value, from_unit, to_unit):
     conversion_factors = {
         "seconds": {"minutes": 0.016667, "hours": 2.778e-4, "days": 1.1575e-5},
@@ -26,6 +34,8 @@ def time_conversion(value, from_unit, to_unit):
     except ValueError:
         print("error")
 
+
+# Also similar to the other function
 def mass_conversion(value, from_unit, to_unit):
     conversion_factors = {
         "mg": {"g": 0.01, "kg": 0.00001, "t": 0.00000001},
@@ -40,11 +50,14 @@ def mass_conversion(value, from_unit, to_unit):
     except ValueError:
         print("error")
 
+
+# When program runs, loop
 check = False
 while not check:
     print("Unit Conversion Calculator")
     print("Which unit of measurement would you like to convert?")
     try:
+        #Asks first for what unit the user will want to convert.
         ask = input(str("Time, Distance, Mass(t, d, m) >"))
         if ask == "t": 
             v = int(input("Enter the value > "))

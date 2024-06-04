@@ -3,10 +3,10 @@
 # 1.0 2024/5/17
 # 1.5 2024/5/22
 
-
+jamal = False
 
 # The program keeps getting looped in a while True loop
-while True:
+while not jamal:
     print("---------")
     try:
         width = int(input("Width > "))
