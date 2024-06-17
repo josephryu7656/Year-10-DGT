@@ -1,8 +1,12 @@
 # Author: Joseph Ryu
-# Date: 
+# Date: 2024/5/22
 # Adding Time 2024/5/22
 # Adding Distance and Mass function 2024/5/24
 # Optimizing code 2024/6/5
+# Adding comments 2024/6/7
+
+
+
 #Distance conversion function
 def distance_conversion(value, from_unit, to_unit):
     # Uses dictionary to define the value of each conversion
@@ -18,7 +22,13 @@ def distance_conversion(value, from_unit, to_unit):
         result = value * conversion_factors[from_unit][to_unit]
         print(f"{result:.2f}{to_unit}")
     except ValueError:
-        print("errror")
+        print("error")
+
+
+
+
+
+
 
 
 #Very similar to the other function
@@ -61,21 +71,27 @@ while not check:
     try:
         #Asks first for what unit the user will want to convert.
         ask = input(str("Time, Distance, Mass(t, d, m) >"))
+        v = int(input("Enter the value > "))
         if ask == "t": 
-            v = int(input("Enter the value > "))
-            p = input(str("From (seconds, minutes, hours, days) > "))
-            c = input(str("To (seconds, minutes, hours, days) > "))
+            try:
+                p = input(str("From (seconds, minutes, hours, days) > "))
+                c = input(str("To (seconds, minutes, hours, days) > "))
+            except ValueError:
+                print("Invalid Input, retrying")
             time_conversion(v, p, c)
-            input(str("run again or exit? (r, e) > "))
-            if input =="e":
-                check = True
+            a = input(str("run again or exit? (r, e) > "))
+            if a == "e":
+                break
             else:
                 pass
     
         elif ask == "d": 
-            v = int(input("Enter the value > "))
-            p = input(str("From (mm, cm, m, km) > "))
-            c = input(str("To (mm, cm, m, km) > "))
+            try:
+                p = input(str("From (mm, cm, m, km) > "))
+                c = input(str("To (mm, cm, m, km) > "))
+                distance_conversion(v, p, c)
+            except ValueError:
+                print("Invalid Input, retrying")
             distance_conversion(v, p, c)
             input(str("run again or exit? (r, e) > "))
             if input =="e":
@@ -84,11 +100,14 @@ while not check:
                 pass
 
         elif ask == "m": 
-            v = int(input("Enter the value > "))
-            p = input(str("From (mg, g, kg, t) > "))
-            c = input(str("To (mg, g, kg, t) > "))
+            try:
+                p = input(str("From (mg, g, kg, t) > "))
+                c = input(str("To (mg, g, kg, t) > "))
             #function has been asked for value, from unit and to unit.
-            mass_conversion(v, p, c)
+                mass_conversion(v, p, c)
+            except ValueError:
+                print("Invalid Input, retrying")
+            mass_conversion(v, p, c)    
             #Option for user to restart program or exit program.
             input(str("run again or exit? (r, e) > "))
             if input =="e":
