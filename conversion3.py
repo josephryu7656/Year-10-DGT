@@ -6,6 +6,8 @@
 # Adding comments 2024/6/7
 # Further optimzation and rewrite of code 2024/06/17\
 
+
+#This function checks each number value to see if it is correct or not
 def num_check(question):
     error = "Please enter a valid input"
     while True:
@@ -20,6 +22,7 @@ def num_check(question):
         except ValueError:
             print(error)
 
+# This function checks every input that is not a number
 def input_check(question, type):
     error = "Please enter a valid input"
     if type == "t":
@@ -29,6 +32,7 @@ def input_check(question, type):
                 if unit in ["seconds", "minutes", "hours", 'days']:
                     return unit
                 else:
+                    #Everytime there is something that is not part of the list, it will print error and ask the question again.
                     print(error)
                     
             except ValueError:
@@ -69,7 +73,7 @@ def distance_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value} {from_unit} is {result:.2f} {to_unit}"
+        return f"{value} {from_unit} is {result} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -83,7 +87,7 @@ def time_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value} {from_unit} is {result:.2f} {to_unit}"
+        return f"{value} {from_unit} is {result} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -96,7 +100,7 @@ def mass_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value} {from_unit} is {result:.2f} {to_unit}"
+        return f"{value} {from_unit} is {result} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
