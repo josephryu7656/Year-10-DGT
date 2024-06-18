@@ -6,6 +6,57 @@
 # Adding comments 2024/6/7
 # Further optimzation and rewrite of code 2024/06/17\
 
+def num_check(question):
+    error = "Please enter a valid input"
+    while True:
+
+        try:
+            number = float(input(question))
+            if number > 0:
+                return number
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+def input_check(question, type):
+    error = "Please enter a valid input"
+    if type == "t":
+        while True:
+            try:
+                unit = str(input(question))
+                if unit in ["seconds", "minutes", "hours", 'days']:
+                    return unit
+                else:
+                    print(error)
+                    
+            except ValueError:
+                print(error)
+    elif type == "d":
+        while True:
+            try:
+                unit = str(input(question))
+                if unit in ["cm", "m", "mm", "km"]:
+                    return unit
+                else:
+                    print(error)
+            except ValueError:
+                print(error)
+
+    elif type == "m":
+        while True:
+            try:
+                unit = str(input(question))
+                if unit in ["mg", "g", "kg", "t"]:
+                    return unit
+                else:
+                    print(error)
+            except ValueError:
+                print(error)
+
+    else:
+        print("Invalid")
 
 def distance_conversion(value, from_unit, to_unit):
     # The function parameters carry the data, which is called inside the while True loop
@@ -18,7 +69,7 @@ def distance_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.6f} {to_unit}"
+        return f"{value} {from_unit} is {result:.2f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -32,7 +83,7 @@ def time_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.6f} {to_unit}"
+        return f"{value} {from_unit} is {result:.2f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -45,7 +96,7 @@ def mass_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.6f} {to_unit}"
+        return f"{value} {from_unit} is {result:.2f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -69,24 +120,24 @@ def main():
             print("Invalid choice. Please enter 't', 'd', or 'm'.")
             continue
 
-        value = input("Enter the value > ")
-        if not value.isdigit():
-            print("Invalid value. Please enter a numeric value.")
-            continue
-        value = int(value)
+        value = num_check("Enter the value > ")
+        # if not value.isdigit():
+        #     print("Invalid value. Please enter a numeric value.")
+        #     continue
 
         if conversion_type == 't':
-            from_unit = input("From (seconds, minutes, hours, days) > ").lower()
-            to_unit = input("To (seconds, minutes, hours, days) > ").lower()
+            from_unit = input_check("From (seconds, minutes, hours, days) > ", "t")
+               
+            to_unit = input_check("To (seconds, minutes, hours, days) > ", "t")
             result = unit_conversion(value, from_unit, to_unit, 'time')
         elif conversion_type == 'd':
-            from_unit = input("From (mm, cm, m, km) > ").lower()
-            to_unit = input("To (mm, cm, m, km) > ").lower()
+            from_unit = input_check("From (mm, cm, m, km) > ", "d")
+            to_unit = input_check("To (mm, cm, m, km) > ", "d")
             result = unit_conversion(value, from_unit, to_unit, 'distance')
             # Conversion function being called.
         elif conversion_type == 'm':
-            from_unit = input("From (mg, g, kg, t) > ").lower()
-            to_unit = input("To (mg, g, kg, t) > ").lower()
+            from_unit = input_check("From (mg, g, kg, t) > ", "d")
+            to_unit = input_check("To (mg, g, kg, t) > ", "d")
             result = unit_conversion(value, from_unit, to_unit, 'mass')
 
         print(result)
