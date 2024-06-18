@@ -7,7 +7,6 @@
 # Further optimzation and rewrite of code 2024/06/17\
 
 
-
 def distance_conversion(value, from_unit, to_unit):
     # The function parameters carry the data, which is called inside the while True loop
     # This list shows the conversion factors of each unit
@@ -19,7 +18,7 @@ def distance_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.2f} {to_unit}"
+        return f"{value}{from_unit} is {result:.6f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -33,7 +32,7 @@ def time_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.2f} {to_unit}"
+        return f"{value}{from_unit} is {result:.6f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
@@ -46,7 +45,7 @@ def mass_conversion(value, from_unit, to_unit):
     }
     try:
         result = value * conversion_factors[from_unit][to_unit]
-        return f"{value}{from_unit} is {result:.2f} {to_unit}"
+        return f"{value}{from_unit} is {result:.6f} {to_unit}"
     except KeyError:
         return "Invalid unit conversion."
 
