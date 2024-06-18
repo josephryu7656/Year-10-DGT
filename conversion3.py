@@ -4,7 +4,9 @@
 # Adding Distance and Mass function 2024/5/24
 # Optimizing code 2024/6/5
 # Adding comments 2024/6/7
-# Further optimzation and rewrite of code 2024/06/17\
+# Further optimzation and rewrite of code 2024/06/17
+# Error checking
+
 
 
 #This function checks each number value to see if it is correct or not
