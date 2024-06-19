@@ -68,7 +68,7 @@ def distance_conversion(value, from_unit, to_unit):
     # The function parameters carry the data, which is called inside the while True loop
     # This list shows the conversion factors of each unit
     conversion_factors = {
-        "cm": {"m": 0.01, "mm": 10, "km": 0.000001},
+        "cm": {"m": 0.01, "mm": 10, "km": 0.00001},
         "m": {"cm": 100, "mm": 1000, "km": 0.001},
         "mm": {"cm": 0.1, "m": 0.001, "km": 1e-6},
         "km": {"cm": 100000, "m": 1000, "mm": 1e+6},
